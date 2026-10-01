@@ -28,7 +28,7 @@ Nmap service version scan (`nmap -p 22 -sV`) from the Kali Linux machine targeti
 Raw JSON output from Cowrie's structured log file (`cowrie.json`), showing detailed session metadata including session IDs, source/destination IPs, ports, connection durations, and session close events. Sessions 5d2d45915c22 and d8d511063b54 connected and disconnected almost instantaneously without command execution indicating a possible port scan. 
 
 
-### 3. Playlog Session Replay
+### 3. Playlog Session Replay (honeypot machine)
 ![Playlog Session Replay](11-playlog-session-replay.png)
 
 Using Cowrie's `playlog` utility to replay a captured attacker session. The replay shows the attacker running basic reconnaissance commands (`ls`, `pwd`, `ls -a`, `cd .`) inside the fake shell before the session timed out due to inactivity (auto-logout).
