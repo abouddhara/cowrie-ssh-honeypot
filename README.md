@@ -2,13 +2,13 @@
 
 ## Overview
 
-This project documents the deployment and analysis of a **Cowrie SSH honeypot** on an Ubuntu 24.04.5 virtual machine. The honeypot was configured to simulate a vulnerable SSH server, capturing brute-force login attempts, credential harvesting, and post-authentication attacker behavior.
+A Cowrie SSH/Telnet honeypot was deployed on an Ubuntu virtual machine to simulate a vulnerable server environment. A separate Kali Linux machine was used to conduct controlled attacks against the honeypot, including brute-force SSH login attempts, port scanning, and shell interaction. The objective was to analyze how Cowrie captures, logs, and categorizes attacker behavior like authentication attempts, executed commands, and session recordings. 
 
 ## Objectives
 
-- Deploy a realistic SSH honeypot to attract and monitor malicious activity
+- Deploy SSH honeypot to simulate attacks
 - Capture and analyze attacker credentials, commands, and sessions
-- Identify attack patterns, source IPs, and common exploitation techniques
+- Identify attack behavior, source IP, and common exploitation techniques
 - Document findings for security research and awareness
 
 ## Architecture
@@ -53,7 +53,7 @@ This project documents the deployment and analysis of a **Cowrie SSH honeypot** 
 
 ### Prerequisites
 
-- Ubuntu 24.04.5 VM with internet access
+- Ubuntu 24.04.5 VM 
 - Python 3.x
 - Git
 
@@ -152,6 +152,3 @@ This project was conducted in a controlled environment for **educational and res
 
 **Amanda Bouddhara**
 
-## License
-
-This project is licensed under the MIT License.
