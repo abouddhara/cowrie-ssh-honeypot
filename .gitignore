@@ -1,0 +1,19 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Sensitive data - never commit real credentials or unsanitized IPs
+*.raw
+*.unsanitized
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
