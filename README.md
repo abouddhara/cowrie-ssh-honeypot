@@ -39,8 +39,14 @@ A Cowrie SSH/Telnet honeypot was deployed on an Ubuntu virtual machine to simula
 | **Deployment**  | Virtual Machine                  |
 
 
-
-
+```
+├── README.md              # Project documentation
+├── attack simulations/    # Screenshots of setup, dashboards, attacks
+├── logs/                  # Sample log files (sanitized)
+├── data/                  # Parsed/analyzed attack data
+├── configs/               # Cowrie configuration files (sanitized)
+└── FINDINGS.md            # Analysis and key findings
+```
 
 ## Setup & Deployment
 
@@ -117,6 +123,20 @@ Cowrie's `playlog` utility was used to replay captured attacker sessions, allowi
 bin/playlog log/tty/<session-id>.log
 ```
 
+This provided insight into what attackers attempted after gaining access, including reconnaissance commands, malware downloads, and privilege escalation attempts.
+
+## Findings
+
+See [FINDINGS.md](FINDINGS.md) for the full analysis of captured data, including:
+
+- Top attempted usernames and passwords
+- Geographic distribution of attack sources
+- Common post-login commands executed by attackers
+- Attack frequency and timing patterns
+
+## Attack Simulations
+
+Screenshots documenting the setup process, live attacks, and analysis dashboards are in the [`attack simulations/`](attack%20simulations/) directory.
 
 ## Disclaimer
 
