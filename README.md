@@ -14,15 +14,16 @@ This project documents the deployment and analysis of a **Cowrie SSH honeypot** 
 ## Architecture
 
 ```
-┌─────────────┐         ┌──────────────────────┐
-│  Attacker   │───SSH──▶│  Ubuntu 24.04.5 VM   │
-│  (Internet) │         │                      │
-└─────────────┘         │  ┌────────────────┐  │
-                        │  │  Cowrie (2222)  │  │
-                        │  │  ↕ Fake Shell   │  │
-                        │  │  ↕ Logging      │  │
-                        │  └────────────────┘  │
-                        └──────────────────────┘
+┌──────────────────────┐         ┌──────────────────────┐
+│  Kali Linux 2026.3   │         │  Ubuntu 24.04.5 VM   │
+│  (Attack Machine)    │───SSH──▶│  (Honeypot Server)   │
+│                      │         │                      │
+│  • Hydra             │         │  ┌────────────────┐  │
+│  • Nmap              │         │  │  Cowrie (2222)  │  │
+│  • Cowrie Playlog    │         │  │  ↕ Fake Shell   │  │
+└──────────────────────┘         │  │  ↕ Logging      │  │
+                                 │  └────────────────┘  │
+                                 └──────────────────────┘
 ```
 
 ## Tech Stack
@@ -33,6 +34,8 @@ This project documents the deployment and analysis of a **Cowrie SSH honeypot** 
 | **Honeypot**    | Cowrie SSH/Telnet Honeypot       |
 | **Language**    | Python (Cowrie framework)        |
 | **Logging**     | JSON logs, session transcripts   |
+| **Attack OS**   | Kali Linux 2026.3                |
+| **Attack Tools** | Hydra, Nmap, Cowrie Playlog     |
 | **Deployment**  | Virtual Machine                  |
 
 ## Project Structure
@@ -97,6 +100,36 @@ This project documents the deployment and analysis of a **Cowrie SSH honeypot** 
    ```bash
    bin/cowrie start
    ```
+
+## Attack Simulation
+
+A separate **Kali Linux 2026.3** machine was used to simulate realistic attacks against the honeypot.
+
+### Nmap Port Scanning
+
+Nmap was used to discover open ports and identify the SSH service running on the honeypot:
+
+```bash
+nmap -sV -p 22 <honeypot-ip>
+```
+
+### Hydra Brute-Force Attack
+
+Hydra was used to perform SSH brute-force attacks with common username and password wordlists:
+
+```bash
+hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<honeypot-ip>
+```
+
+### Cowrie Playlog (Session Replay)
+
+Cowrie's `playlog` utility was used to replay captured attacker sessions, allowing detailed review of commands executed inside the fake shell:
+
+```bash
+bin/playlog log/tty/<session-id>.log
+```
+
+This provided insight into what attackers attempted after gaining access, including reconnaissance commands, malware downloads, and privilege escalation attempts.
 
 ## Findings
 
