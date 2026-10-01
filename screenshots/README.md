@@ -26,10 +26,10 @@ Cloning the official Cowrie honeypot repository from GitHub and navigating into 
 
 Launching the Hydra brute-force attack from the Kali Linux machine against the honeypot, targeting the `admin` user with the `rockyou.txt` password wordlist over SSH.
 
-### 5. Hydra Attack with Cowrie Logs (Full View)
-![Hydra Attack with Cowrie Logs](05-hydra-attack-with-cowrie-logs.png)
+### 5. Hydra Brute-Force Attack Results
+![Hydra Brute-Force Results](05-hydra-attack-with-cowrie-logs.png)
 
-Side-by-side view showing the Hydra attack running on the Kali machine (left) alongside real-time Cowrie logs on the honeypot server (right). The Cowrie logs show each incoming SSH connection being accepted and logged as Hydra cycles through passwords.
+Output of the Hydra brute-force attack against the honeypot SSH server. Hydra successfully found 16 valid passwords for the `admin` account using the `rockyou.txt` wordlist, including common credentials like `123456`, `password`, `abc123`, `iloveyou`, `princess`, `rockyou`, and `babygirl`. The attack completed in under 30 seconds with ~896,525 tries per task.
 
 ### 6. Hydra Attack — Kali Terminal Close-Up
 ![Hydra Attack Kali Closeup](06-hydra-attack-kali-closeup.png)
