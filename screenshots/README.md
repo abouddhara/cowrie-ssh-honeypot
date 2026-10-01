@@ -22,10 +22,10 @@ Grepping the Cowrie log file for login attempts, showing a rapid series of succe
 
 Raw JSON output from Cowrie's structured log file (`cowrie.json`), showing detailed session metadata including session IDs, source/destination IPs, ports, connection durations, and session close events. Each entry captures the full lifecycle of an attacker connection.
 
-### 2. Nmap Scan and Session Analysis
-![Nmap Scan and Session Analysis](10-nmap-scan-and-session-analysis.png)
+### Nmap Port Scan Results (kali machine)
+![Nmap Port Scan Results](10-nmap-scan-and-session-analysis.png)
 
-Left terminal: Nmap service version scans from Kali Linux detecting the SSH service (OpenSSH 9.2p1 on Debian) running on port 22 of the honeypot. Right terminal: Cowrie JSON logs capturing the attacker's commands (`ls`, `pwd`, `ls -a`, `cd`) during an interactive session, followed by grep commands searching for Nmap-related entries in the logs.
+Nmap service version scan (`nmap -p 22 -sV`) from the Kali Linux machine targeting the honeypot at 10.47.1.31. The scan detected port 22 open running OpenSSH 9.2p1 (Debian, protocol 2.0) on a Proxmox Server Solutions host. The scan completed in 0.83 seconds, confirming the SSH honeypot was accessible and appearing as a legitimate server.
 
 ### 11. Playlog Session Replay
 ![Playlog Session Replay](11-playlog-session-replay.png)
