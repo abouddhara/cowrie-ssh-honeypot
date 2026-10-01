@@ -25,20 +25,7 @@ Nmap service version scan (`nmap -p 22 -sV`) from the Kali Linux machine targeti
 ### Cowrie JSON Logs (honeypot machine)
 ![Cowrie JSON Logs](09-cowrie-json-logs.png)
 
-Raw JSON output from Cowrie's structured log file (`cowrie.json`) using `tail -f` to monitor live entries. The logs capture session close events for multiple attacker sessions, including:
-
-- `74f225800ce4`
-- `17008bda46dd`
-- `afc94504561a`
-- `9cd8d7d2d01e`
-- `23ccab60278a`
-- `293d72501ecf`
-- `e029179716f1`
-- `762db1e142d4`
-- `97dc33e1f6f8`
-- `d8e09e3d9697`
-
-Each entry records the session ID, protocol (SSH), source/destination IPs, ports, connection duration in milliseconds, and close reason ("Connection lost"). All sessions originated from `10.47.1.27` targeting port `2222` on the honeypot at `10.47.1.31`. Sessions `5d2d45915c22` and `d8d511063b54` connected and disconnected almost instantaneously without command execution, indicating a possible port scan.
+Raw JSON output from Cowrie's structured log file (`cowrie.json`), showing detailed session metadata including session IDs, source/destination IPs, ports, connection durations, and session close events. Sessions 5d2d45915c22 and d8d511063b54 connected and disconnected almost instantaneously without command execution indicating a possible port scan. 
 
 
 ### 3. Playlog Session Replay
