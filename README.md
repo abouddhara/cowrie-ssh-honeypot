@@ -39,15 +39,6 @@ A Cowrie SSH/Telnet honeypot was deployed on an Ubuntu virtual machine to simula
 | **Deployment**  | Virtual Machine                  |
 
 
-```
-├── README.md              # Project documentation
-├── attack simulations/    # Screenshots of setup, dashboards, attacks
-├── logs/                  # Sample log files (sanitized)
-├── data/                  # Parsed/analyzed attack data
-├── configs/               # Cowrie configuration files (sanitized)
-└── FINDINGS.md            # Analysis and key findings
-```
-
 ## Setup & Deployment
 
 ### Prerequisites
@@ -97,7 +88,7 @@ A Cowrie SSH/Telnet honeypot was deployed on an Ubuntu virtual machine to simula
 
 ## Attack Simulation
 
-A separate **Kali Linux 2026.3** machine was used to simulate realistic attacks against the honeypot. The attack simulations can be viewed in the [`attack simulation`](attack simulation/) directory.
+A separate **Kali Linux 2026.3** machine was used to simulate realistic attacks against the honeypot. The attack simulations can be viewed in the [`attack simulations/`](attack%20simulations/) directory.
 
 ### Nmap Port Scanning
 
@@ -125,20 +116,7 @@ bin/playlog log/tty/<session-id>.log
 
 This provided insight into what attackers attempted after gaining access, including reconnaissance commands, malware downloads, and privilege escalation attempts.
 
-## Findings
-
-See [FINDINGS.md](FINDINGS.md) for the full analysis of captured data, including:
-
-- Top attempted usernames and passwords
-- Geographic distribution of attack sources
-- Common post-login commands executed by attackers
-- Attack frequency and timing patterns
-
-## Attack Simulations
-
-Screenshots documenting the setup process, live attacks, and analysis dashboards are in the [`attack simulations/`](attack%20simulations/) directory.
-
-## Disclaimer
+### Disclaimer
 
 This project was conducted in a controlled environment for **educational and research purposes only**. The honeypot was deployed on an isolated virtual machine. No real systems were compromised, and no offensive actions were taken against any attackers. All logged IP addresses and credentials in this repository have been sanitized.
 
