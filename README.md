@@ -118,7 +118,7 @@ nmap -sV -p 22 <honeypot-ip>
 Hydra was used to perform SSH brute-force attacks with common username and password wordlists:
 
 ```bash
-hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<honeypot-ip>
+hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://<honeypot-ip>
 ```
 
 ### Cowrie Playlog (Session Replay)
