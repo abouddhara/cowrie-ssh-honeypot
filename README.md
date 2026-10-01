@@ -69,23 +69,18 @@ A Cowrie SSH/Telnet honeypot was deployed on an Ubuntu virtual machine to simula
    sudo apt install -y git python3-venv python3-pip libssl-dev libffi-dev build-essential
    ```
 
-3. **Create a dedicated user**
+3. **Clone Cowrie into /opt**
    ```bash
-   sudo adduser --disabled-password cowrie
-   sudo su - cowrie
-   ```
-
-4. **Clone and configure Cowrie**
-   ```bash
-   git clone https://github.com/cowrie/cowrie.git
+   cd /opt
+   sudo git clone https://github.com/cowrie/cowrie.git
    cd cowrie
-   python3 -m venv cowrie-env
+   sudo python3 -m venv cowrie-env
    source cowrie-env/bin/activate
    pip install --upgrade pip
    pip install -r requirements.txt
    ```
 
-5. **Configure Cowrie**
+4. **Configure Cowrie**
    ```bash
    cp etc/cowrie.cfg.dist etc/cowrie.cfg
    # Edit etc/cowrie.cfg to customize hostname, SSH version, etc.
