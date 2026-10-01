@@ -19,9 +19,9 @@ A Cowrie SSH/Telnet honeypot was deployed on an Ubuntu virtual machine to simula
 │  (Attack Machine)    │───SSH──▶│  (Honeypot Server)   │
 │                      │         │                      │
 │  • Hydra             │         │  ┌────────────────┐  │
-│  • Nmap              │         │  │  Cowrie (2222)  │  │
-│  • Cowrie Playlog    │         │  │  ↕ Fake Shell   │  │
-└──────────────────────┘         │  │  ↕ Logging      │  │
+│  • Nmap              │         │  │  Cowrie (2222) │  │
+│  • Cowrie Playlog    │         │  │  ↕ Fake Shell  │  │
+└──────────────────────┘         │  │  ↕ Logging     │  │
                                  │  └────────────────┘  │
                                  └──────────────────────┘
 ```
@@ -38,16 +38,9 @@ A Cowrie SSH/Telnet honeypot was deployed on an Ubuntu virtual machine to simula
 | **Attack Tools** | Hydra, Nmap, Cowrie Playlog     |
 | **Deployment**  | Virtual Machine                  |
 
-## Project Structure
 
-```
-├── README.md              # Project documentation
-├── screenshots/           # Screenshots of setup, dashboards, attacks
-├── logs/                  # Sample log files (sanitized)
-├── data/                  # Parsed/analyzed attack data
-├── configs/               # Cowrie configuration files (sanitized)
-└── FINDINGS.md            # Analysis and key findings
-```
+
+
 
 ## Setup & Deployment
 
@@ -98,7 +91,7 @@ A Cowrie SSH/Telnet honeypot was deployed on an Ubuntu virtual machine to simula
 
 ## Attack Simulation
 
-A separate **Kali Linux 2026.3** machine was used to simulate realistic attacks against the honeypot.
+A separate **Kali Linux 2026.3** machine was used to simulate realistic attacks against the honeypot. The attack simulations can be viewed in the [`attack simulation`](attack simulation/) directory.
 
 ### Nmap Port Scanning
 
@@ -124,20 +117,6 @@ Cowrie's `playlog` utility was used to replay captured attacker sessions, allowi
 bin/playlog log/tty/<session-id>.log
 ```
 
-This provided insight into what attackers attempted after gaining access, including reconnaissance commands, malware downloads, and privilege escalation attempts.
-
-## Findings
-
-See [FINDINGS.md](FINDINGS.md) for the full analysis of captured data, including:
-
-- Top attempted usernames and passwords
-- Geographic distribution of attack sources
-- Common post-login commands executed by attackers
-- Attack frequency and timing patterns
-
-## Screenshots
-
-Screenshots documenting the setup process, live attacks, and analysis dashboards are in the [`screenshots/`](screenshots/) directory.
 
 ## Disclaimer
 
