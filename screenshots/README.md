@@ -17,22 +17,20 @@ Output of the Hydra brute-force attack against the honeypot SSH server. Hydra su
 
 Grepping the Cowrie log file for login attempts, showing a rapid series of successful (fake) logins from the attacker IP. Captured credentials include common passwords like `123456`, `password`, `abc123`, `iloveyou`, `princess`, `rockyou`, and `babygirl` — all tried against the `admin` username.
 
-### Cowrie JSON Logs (honeypot machine)
-![Cowrie JSON Logs](09-cowrie-json-logs.png)
-
-Raw JSON output from Cowrie's structured log file (`cowrie.json`), showing detailed session metadata including session IDs, source/destination IPs, ports, connection durations, and session close events. Each entry captures the full lifecycle of an attacker connection.
-
-### Nmap Port Scan Results (kali machine)
+### 2. Nmap Port Scan (kali machine)
 ![Nmap Port Scan Results](10-nmap-scan-and-session-analysis.png)
 
 Nmap service version scan (`nmap -p 22 -sV`) from the Kali Linux machine targeting the honeypot at 10.47.1.31. The scan detected port 22 open running OpenSSH 9.2p1 (Debian, protocol 2.0) on a Proxmox Server Solutions host. The scan completed in 0.83 seconds, confirming the SSH honeypot was accessible and appearing as a legitimate server.
 
-### 11. Playlog Session Replay
+### Cowrie JSON Logs (honeypot machine)
+![Cowrie JSON Logs](09-cowrie-json-logs.png)
+
+Raw JSON output from Cowrie's structured log file (`cowrie.json`), showing detailed session metadata including session IDs, source/destination IPs, ports, connection durations, and session close events. Sessions 5d2d45915c22 and d8d511063b54 connected and disconnected almost instantaneously without command execution indicating a possible port scan. 
+
+
+### 3. Playlog Session Replay
 ![Playlog Session Replay](11-playlog-session-replay.png)
 
 Using Cowrie's `playlog` utility to replay a captured attacker session. The replay shows the attacker running basic reconnaissance commands (`ls`, `pwd`, `ls -a`, `cd .`) inside the fake shell before the session timed out due to inactivity (auto-logout).
 
-### 12. Session Analysis Summary
-![Session Analysis Summary](12-session-analysis-summary.png)
 
-Analysis summary of captured honeypot sessions showing three sessions from the same source IP: one interactive session lasting 3.6 minutes with recorded commands, and two quick probes (19ms and 14ms) with no interaction — likely automated port scans or version checks.
